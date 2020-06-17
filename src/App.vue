@@ -4,7 +4,7 @@
       <h1>Page made with vue.js</h1>
       <h2>Skills</h2>
       <InputBox :skills="skills" @addNewSkill="addSkill($event)" />
-      <div>New Skill is {{skill}}</div>
+      <div>New Skill is {{skill.skillName}}</div>
       <SkillsList v-bind:skills="skills" />
     </div>
   </div>
