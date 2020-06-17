@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <form action="sumbit" @submit.prevent="addSkill">
     <input type="text" placeholder="Skill" v-model="skill" />
-    <div>{{skill}}</div>
-  </div>
+    <button>Submit</button>
+  </form>
 </template>
 
 <script>
@@ -12,6 +12,12 @@ export default {
     return {
       skill: ""
     };
+  },
+  methods: {
+    addSkill() {
+      this.$emit("addNewSkill", this.skill);
+      this.skill = "";
+    }
   }
 };
 </script>

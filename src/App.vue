@@ -3,8 +3,9 @@
     <div>
       <h1>Page made with vue.js</h1>
       <h2>Skills</h2>
-      <InputBox />
-      <SkillsList :skills="skills" />
+      <InputBox :skills="skills" @addNewSkill="addSkill($event)" />
+      <div>New Skill is {{skill}}</div>
+      <SkillsList v-bind:skills="skills" />
     </div>
   </div>
 </template>
@@ -24,8 +25,19 @@ export default {
       skills: [
         { skillName: "Vue.js", id: 1 },
         { skillName: "React", id: 2 }
-      ]
+      ],
+      skill: ""
     };
+  },
+  methods: {
+    addSkill($event) {
+      this.skill = {
+        skillName: $event,
+        id: this.skills.length + 1
+      };
+      this.skills.push(this.skill);
+      console.log(this.skill);
+    }
   }
 };
 </script>
